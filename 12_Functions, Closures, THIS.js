@@ -44,6 +44,9 @@ console.log(me.details())
 
 
 
+// if you use THIS in regular functions in strict mode, it refers undefined.
+
+
 // *********************** CALL and BIND*******************************
 
 // 💡 Real-life analogy:
@@ -134,6 +137,13 @@ function newDetails(name){
 
 
 const details2 = new newDetails('Hemendra')
+
+
+
+
+
+
+
 
 
 
