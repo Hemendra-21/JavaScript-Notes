@@ -85,3 +85,10 @@ console.log(str.slice(3,5))
 
 
 
+
+
+const obj = [1,[2,[3]]]
+
+console.log(obj.flat(1))
+
+
