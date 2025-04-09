@@ -1,94 +1,70 @@
-globalThis.a = 10;
+function Person(){
+    this.age = 22
+}
 
-function outer(){
-    function inner(){
-        console.log(globalThis.a)
+console.log(Person.age)
+
+
+
+
+{
+    function testPromise(){
+        return new Promise((resolve,reject)=>{
+            let res = 10;
+
+            if(2 + 5 === res){
+                resolve('correct answer')
+            }
+            else{
+                reject('wrong answer')
+            }
+        })
     }
 
-    inner()
+
+    testPromise().then(message=>{
+        console.log('result is ' + message)
+    })
+    .catch(message=>{
+        console.log('result is ' + message)
+    })
 }
 
-outer()
 
 
 
-// *********** THIS in regular functions ************//
-globalThis.name = 'Hemendra from outer'
-const details = {
-    name : 'Hemendra',
-    greet: ()=>{
-        console.log(globalThis.name)
+
+
+
+
+
+
+
+
+
+
+
+
+{
+
+    function fetchResponse(companyName){
+        return new Promise((resolve,reject)=>{
+            if (companyName === 'YTP'){
+                resolve('welcome to YTP')
+            }
+            else{
+                reject('You are not authorized')
+            }
+        })
     }
-}
-
-details.greet()
-
-// having details(Object) on left side while calling greet.
-// THIS is automatically gets bind to Object(details)
 
 
-
-
-
-
-
-
-
-// ************ THIS in Arrow functions ************* //
-
-globalThis.name = 'Hemendra Outer'
-
-const details1 = {
-    name : 'Hemendra Chandaluri',
-    greet : ()=>{
-        console.log(name)
-        console.log(this.name)
-        console.log(globalThis.name)
+    async function test(){
+        console.log('before 1st await')
+        const initialResponse = await fetchResponse('YTP')
+        console.log(initialResponse)
+        console.log('after 1st await')
     }
+
+    test()
 }
-
-
-details1.greet()
-
-
-
-// In Arrow functions, THIS is not dynamic
-// It doesn't get its own THIS, --instead it lexically inherits THIS from the parent scope
-
-
-
-
-const details2 = {
-    name: 'Hemendra',
-    greet: setTimeout(
-        function(){
-            console.log(this.name)
-        }
-    )
-}
-
-details2.greet
-
-
-
-
-
-
-
-
-
-const str = 'Rishika'
-
-console.log(str.slice(3,5))
-
-
-
-
-
-
-
-const obj = [1,[2,[3]]]
-
-console.log(obj.flat(1))
-
-
